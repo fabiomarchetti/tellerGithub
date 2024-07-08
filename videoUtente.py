@@ -34,29 +34,60 @@ mpDraw = mp.solutions.drawing_utils
 
 class Worker1(QThread):
 	ImageUpdate = pyqtSignal(QImage)
-
-
+	dist = 0
+	face = []
+	# VARIABILE FOCALE
+	focale = pyqtSignal(int)
 
 	def run(self):
 		self.TheadActivate = True
 		cap = cv2.VideoCapture(0)
+		detector = FaceMeshDetector(maxFaces=1)
+
+		#self.focale.emit(self.aumentoFocale)
+
 		while self.TheadActivate:
 			success, img = cap.read()
-			img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-			if success:
-				img = cv2.flip(img, 1)
+			# mostra tutti i punti della faccia se True
+			img, self.faces = detector.findFaceMesh(img, draw=False)
 
-				results = pose.process(img)
-				#img = cv2.resize(img, (854, 660), interpolation=cv2.INTER_AREA)
-				print('dimensiioni: ' +str(img.shape))
+			if self.faces:
+				face = self.faces[0]
+				pointLeft = face[145]
+				pointRight = face[374]
+				cv2.line(img, pointLeft, pointRight, (255, 0, 0), 3)
+				cv2.circle(img, pointLeft, 5, (255, 0, 255), cv2.FILLED)
+				cv2.circle(img, pointRight, 5, (255, 0, 255), cv2.FILLED)
+				# distanza tra gli occhi
+				w, _ = detector.findDistance(pointLeft, pointRight)
+				# cerco il punto focale
+				W = 6.3
+				# d = 50
+				# f = (w*d)/W
+				# print(f) #ESTRAGGO VALORE DI F CHE RISULTA ESSERE DI 588
 
-				print(results.pose_landmarks)
+				# DISTANZA DALLA TELECAMERA MISURATA == 588
+				#f = 588
+				f = 950
+				self.dist = (W * f) / w
+				print(self.dist)
 
-				ConvertToQtFormat = QImage(img.data, img.shape[1], img.shape[0], QImage.Format_RGB888)
-				Pic = ConvertToQtFormat.scaled(1024, 768, Qt.KeepAspectRatio)
-				self.ImageUpdate.emit(Pic)
+
+			img = cv2.flip(img, 1)
+
+			cvzone.putTextRect(img, f'distanza dal video: {int(self.dist)}', (100, 100),
+				   scale=2, thickness=2, colorT=(255, 255, 255),
+				   colorR=(255, 0, 0), font=cv2.FONT_HERSHEY_PLAIN,
+				   offset=10, border=None, colorB=(0, 255, 0))
+
+			ConvertToQtFormat = QImage(img.data, img.shape[1], img.shape[0], QImage.Format_RGB888)
+			Pic = ConvertToQtFormat.scaled(1024, 768, Qt.KeepAspectRatio)
+			self.ImageUpdate.emit(Pic)
 
 	def stop(self):
 		self.ThreadActive = False
 		self.wait()
 		self.terminate()
+
+	def aumentaFocale(self):
+		pass

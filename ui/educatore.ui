@@ -24,7 +24,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>30</y>
+      <y>200</y>
       <width>854</width>
       <height>581</height>
      </rect>
@@ -410,7 +410,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>620</y>
+      <y>790</y>
       <width>121</width>
       <height>91</height>
      </rect>
@@ -490,7 +490,7 @@
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>620</y>
+      <y>790</y>
       <width>121</width>
       <height>91</height>
      </rect>
@@ -570,7 +570,7 @@
     <property name="geometry">
      <rect>
       <x>230</x>
-      <y>620</y>
+      <y>790</y>
       <width>121</width>
       <height>91</height>
      </rect>
@@ -650,7 +650,7 @@
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>620</y>
+      <y>790</y>
       <width>121</width>
       <height>91</height>
      </rect>
@@ -730,7 +730,7 @@
     <property name="geometry">
      <rect>
       <x>430</x>
-      <y>620</y>
+      <y>790</y>
       <width>121</width>
       <height>91</height>
      </rect>
@@ -810,7 +810,7 @@
     <property name="geometry">
      <rect>
       <x>630</x>
-      <y>620</y>
+      <y>790</y>
       <width>121</width>
       <height>91</height>
      </rect>
@@ -890,7 +890,7 @@
     <property name="geometry">
      <rect>
       <x>530</x>
-      <y>620</y>
+      <y>790</y>
       <width>121</width>
       <height>91</height>
      </rect>
@@ -970,7 +970,7 @@
     <property name="geometry">
      <rect>
       <x>730</x>
-      <y>620</y>
+      <y>790</y>
       <width>121</width>
       <height>91</height>
      </rect>
@@ -1050,7 +1050,7 @@
     <property name="geometry">
      <rect>
       <x>580</x>
-      <y>700</y>
+      <y>870</y>
       <width>121</width>
       <height>91</height>
      </rect>
@@ -1130,7 +1130,7 @@
     <property name="geometry">
      <rect>
       <x>480</x>
-      <y>700</y>
+      <y>870</y>
       <width>121</width>
       <height>91</height>
      </rect>
@@ -1210,7 +1210,7 @@
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>700</y>
+      <y>870</y>
       <width>121</width>
       <height>91</height>
      </rect>
@@ -1290,7 +1290,7 @@
     <property name="geometry">
      <rect>
       <x>280</x>
-      <y>700</y>
+      <y>870</y>
       <width>121</width>
       <height>91</height>
      </rect>
@@ -1370,7 +1370,7 @@
     <property name="geometry">
      <rect>
       <x>180</x>
-      <y>700</y>
+      <y>870</y>
       <width>121</width>
       <height>91</height>
      </rect>
@@ -1450,7 +1450,7 @@
     <property name="geometry">
      <rect>
       <x>680</x>
-      <y>700</y>
+      <y>870</y>
       <width>121</width>
       <height>91</height>
      </rect>
@@ -1530,7 +1530,7 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>700</y>
+      <y>870</y>
       <width>121</width>
       <height>91</height>
      </rect>
@@ -1605,6 +1605,106 @@
       </size>
      </property>
     </widget>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>10</y>
+      <width>607</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <pointsize>16</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(128, 0, 2);</string>
+       </property>
+       <property name="text">
+        <string>TARATURA DISTANZA DALLO SCHERMO</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnMenoDistanza">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>35</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>20</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(16, 128, 64);
+color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>-</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnPiuDistanza">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>35</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>20</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(16, 128, 64);
+color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>+</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="lblValoreFocale">
+       <property name="font">
+        <font>
+         <pointsize>16</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(128, 0, 2);</string>
+       </property>
+       <property name="text">
+        <string>- -</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

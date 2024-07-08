@@ -26,18 +26,31 @@ class PrimoVideo(QMainWindow):
 		menu = self.menuBar()
 		menu.setNativeMenuBar(False)
 		# VOCI MENU
-		### VIDEO
+		### VIDEO PRINCIPALE
 		self.actionVideoPrincipale.triggered.connect(self.apriVideoPrincipale)
+		### VIDEO TELLER
 		self.actionVideoTeller.triggered.connect(self.apriVideoTeller)
+		### VIDEO IRIDE
 		self.actionVideoIride.triggered.connect(self.apriVideoIride)
 		self.actionVideoMovimentoTesta.triggered.connect(self.apriVideoMovimentoTesta)
+		## CHIUDI PROGRAMMA
+		self.actionChiudiProgramma.triggered.connect(self.chiudi)
+
+
+		# AUMENTO - DIMINUISCO DISTANZA DAL VIDEO
+		self.btnPiuDistanza.clicked.connect(self.piuDistanza)
+		self.btnMenoDistanza.clicked.connect(self.menoDistanza)
+
+
+
+
+
 		### TELLER
 
 		### DATI
 		### UTENTI
 
-		## CHIUDI PROGRAMMA
-		self.actionChiudiProgramma.triggered.connect(self.chiudi)
+
 
 		## AVVIO THREAD
 		self.videoPrincipale = Worker1()
@@ -55,6 +68,12 @@ class PrimoVideo(QMainWindow):
 	def apriVideoMovimentoTesta(self):
 		pass
 	def apriVideoIride(self):
+		pass
+
+	#AUMENTO E DIMINUISCO DISTAMZA DAL VIDEO
+	def piuDistanza(self):
+		pass
+	def menoDistanza(self):
 		pass
 
 
