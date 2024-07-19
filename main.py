@@ -13,6 +13,8 @@ from PyQt5.QtWidgets import QMainWindow
 
 from videoUtente import Worker1
 
+## VARIABILI GLOBALI
+valoreFocale = 0
 
 class PrimoVideo(QMainWindow):
 	def __init__(self):
@@ -36,14 +38,56 @@ class PrimoVideo(QMainWindow):
 		## CHIUDI PROGRAMMA
 		self.actionChiudiProgramma.triggered.connect(self.chiudi)
 
+		## AVVIO THREAD
+		self.videoPrincipale = Worker1()
+		self.videoPrincipale.ImageUpdate.connect(self.ImageUpdateSlot)
+
+
+		## RITORNO DELLA DISTANZA DAL VIDEO
+		self.videoPrincipale.focale.connect(self.ritornoFocale)
+		# RITORNO DELLA DISTANZA DAL NASO
+
+		self.videoPrincipale.distanzaNasoDestra.connect(self.ritornoDistanzaDestra)
+		self.videoPrincipale.distanzaNasoSinistra.connect(self.ritornoDistanzaSinistra)
+		self.videoPrincipale.latoSguardo.connect(self.ritornoLatoSguardo)
 
 		# AUMENTO - DIMINUISCO DISTANZA DAL VIDEO
 		self.btnPiuDistanza.clicked.connect(self.piuDistanza)
 		self.btnMenoDistanza.clicked.connect(self.menoDistanza)
 
+		## METTO ASSI VIDEO
+		self.btnAssiCentroVideo.clicked.connect(self.assiCentroVideo)
+
+	## IMPOSTO ETICHETTA CON DISTANZA VIDEO
+	def ritornoFocale(self, value):
+		self.lblValoreFocale.setText(str(value) + " cm.")
+	## AUMENTO FOCALE
+	def aumentoFocale(self):
+		pass
+	## DIINUISCO FOCALE
+	def diminuiscoFocale(self, value):
+		pass
+
+	# AUMENTO E DIMINUISCO DISTAMZA DAL VIDEO
+	def piuDistanza(self, value):
+		self.videoPrincipale.aumentoFocale()
+
+	def menoDistanza(self):
+		self.videoPrincipale.diminuiscoFocale()
+
+	## IMPOSTO ETICHETTA CON DISTANZA NASO DESTRA E SINISTRA
+	def ritornoDistanzaDestra(self, value):
+		self.lblDistanzaDestra.setText(str(value) + " cm.")
+	def ritornoDistanzaSinistra(self, value):
+		self.lblDistanzaSinistra.setText(str(value) + " cm.")
 
 
+	def ritornoLatoSguardo(self, value):
+		self.lblSguardo.setText(value)
 
+	## ASSI VIDEO
+	def assiCentroVideo(self):
+		self.videoPrincipale.mostroNacondoAssi()
 
 		### TELLER
 
@@ -52,9 +96,7 @@ class PrimoVideo(QMainWindow):
 
 
 
-		## AVVIO THREAD
-		self.videoPrincipale = Worker1()
-		self.videoPrincipale.ImageUpdate.connect(self.ImageUpdateSlot)
+
 
 	def ImageUpdateSlot(self, Image):
 		self.lblVideoPrincipale.setPixmap(QPixmap.fromImage(Image))
@@ -70,11 +112,7 @@ class PrimoVideo(QMainWindow):
 	def apriVideoIride(self):
 		pass
 
-	#AUMENTO E DIMINUISCO DISTAMZA DAL VIDEO
-	def piuDistanza(self):
-		pass
-	def menoDistanza(self):
-		pass
+
 
 
 
